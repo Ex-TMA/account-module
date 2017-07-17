@@ -1,10 +1,13 @@
 # security-module
 
-gradle
-db: MySQL
-Spring 
-JPASpring 
-BootSpring 
-SecuritySHA256
-support token
-cookie to store token
+- gradle
+
+- db: MySQL
+- webserver: tomcat
+
+- Spring 
+- JPASpring 
+- BootSpring 
+- SecuritySHA256
+- support token
+- cookie to store token
