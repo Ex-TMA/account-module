@@ -1,5 +1,7 @@
 package security.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -9,13 +11,13 @@ import java.util.Date;
  * Created by truongnguyen on 7/18/17.
  */
 @Entity
-public class AccountToken implements Serializable {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+public class AccountToken extends BaseEntity {
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    @NotBlank
     private String token;
+    @NotBlank
     private String ip;
     @Temporal(TemporalType.TIMESTAMP)
     private Date expiresAt;
@@ -30,10 +32,6 @@ public class AccountToken implements Serializable {
         this.ip = ip;
         this.expiresAt = expiresAt;
         this.account = account;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public Date getCreatedAt() {

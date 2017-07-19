@@ -2,8 +2,10 @@ package security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import security.model.Access;
 import security.model.Account;
 import security.model.AccountAccess;
+import security.model.AccountState;
 import security.repository.AccountAccessRepository;
 import security.repository.AccountRepository;
 import security.repository.AccountTokenRepository;
@@ -22,10 +24,15 @@ public class StartupRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        AccountAccess access = accountAccessRepository.save(new AccountAccess("ADMIN"));
+        AccountAccess admin = accountAccessRepository.save(new AccountAccess(Access.ADMIN));
+        AccountAccess user = accountAccessRepository.save(new AccountAccess(Access.USER));
 
-        Account acc = new Account("truong","password","active","truong nguyen", "truongnguyen1610@gmail.com");
-        acc.addAccess(access);
-        accountRepository.save(acc);
+        Account acc1 = new Account("truong1","password", AccountState.ACTIVE,"truong nguyen admin", "truongnguyen1610@gmail.com");
+        acc1.addAccess(admin);
+        accountRepository.save(acc1);
+
+        Account acc2 = new Account("truong2","password", AccountState.ACTIVE,"truong nguyen user", "truongnguyen1610@gmail.com");
+        acc2.addAccess(user);
+        accountRepository.save(acc2);
     }
 }
