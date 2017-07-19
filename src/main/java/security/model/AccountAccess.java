@@ -7,28 +7,23 @@ import java.io.Serializable;
  * Created by truongnguyen on 7/18/17.
  */
 @Entity
-public class AccountAccess implements Serializable {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
-    private String access;
+public class AccountAccess extends BaseEntity {
+
+    @Enumerated(EnumType.STRING)
+    private Access access;
 
     public AccountAccess() {
     }
 
-    public AccountAccess(String access) {
+    public AccountAccess(Access access) {
         this.access = access;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getAccess() {
+    public Access getAccess() {
         return access;
     }
 
-    public void setAccess(String access) {
+    public void setAccess(Access access) {
         this.access = access;
     }
     @Override

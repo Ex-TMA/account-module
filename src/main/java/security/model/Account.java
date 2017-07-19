@@ -1,8 +1,12 @@
 package security.model;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import com.google.common.collect.Lists;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -11,16 +15,20 @@ import java.util.List;
  * Created by truongnguyen on 7/18/17.
  */
 @Entity
-public class Account implements Serializable{
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+public class Account extends BaseEntity{
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    @NotBlank
     private String userName;
+    @NotBlank
     private String pass;
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private AccountState state;
+    @NotBlank
     private String name;
+    @Email
     private String email;
     private int timeToLiveInMinutes;
 
@@ -30,17 +38,13 @@ public class Account implements Serializable{
     protected Account() {
     }
 
-    public Account(String userName, String pass, String state, String name, String email) {
+    public Account(String userName, String pass, AccountState state, String name, String email) {
         this.userName = userName;
         this.pass = pass;
         this.state = state;
         this.name = name;
         this.email = email;
         this.accesses = Lists.newArrayList();
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public Date getCreatedAt() {
@@ -59,11 +63,11 @@ public class Account implements Serializable{
         this.pass = pass;
     }
 
-    public String getState() {
+    public AccountState getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(AccountState state) {
         this.state = state;
     }
 
