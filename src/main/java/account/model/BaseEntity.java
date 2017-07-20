@@ -1,4 +1,4 @@
-package security.model;
+package account.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

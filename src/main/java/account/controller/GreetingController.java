@@ -1,10 +1,10 @@
-package security.controller;
+package account.controller;
 
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import security.model.Greeting;
+import account.model.Greeting;
 
 /**
  * Created by nsonanh on 17/07/2017.

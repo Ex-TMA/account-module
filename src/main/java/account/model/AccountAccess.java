@@ -1,7 +1,6 @@
-package security.model;
+package account.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * Created by truongnguyen on 7/18/17.

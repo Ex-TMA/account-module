@@ -1,10 +1,8 @@
-package security.model;
+package account.model;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
