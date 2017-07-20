@@ -1,6 +1,8 @@
 package account.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 /**
  * Created by truongnguyen on 7/18/17.
