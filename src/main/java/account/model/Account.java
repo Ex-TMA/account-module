@@ -1,13 +1,10 @@
-package security.model;
+package account.model;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import com.google.common.collect.Lists;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 

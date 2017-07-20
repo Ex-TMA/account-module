@@ -1,4 +1,4 @@
-package security.model;
+package account.model;
 
 /**
  * Created by nsonanh on 17/07/2017.
