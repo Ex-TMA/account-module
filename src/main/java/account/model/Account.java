@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Null;
 import java.util.Date;
 import java.util.List;
 
@@ -27,10 +28,10 @@ public class Account extends BaseEntity{
     private String name;
     @Email
     private String email;
-    private int timeToLiveInMinutes;
 
     @ManyToMany
-    private List<AccountAccess> accesses;
+    @JoinTable(name = "AccountAccess", joinColumns = { @JoinColumn(name = "accountId") }, inverseJoinColumns = { @JoinColumn(name = "accessId") })
+    private List<Access> accesses;
 
     protected Account() {
     }
@@ -84,14 +85,7 @@ public class Account extends BaseEntity{
         this.email = email;
     }
 
-    public int getTimeToLiveInMinutes() {
-        return timeToLiveInMinutes;
-    }
-
-    public void setTimeToLiveInMinutes(int timeToLiveInMinutes) {
-        this.timeToLiveInMinutes = timeToLiveInMinutes;
-    }
-    public void addAccess(AccountAccess access){
+    public void addAccess(Access access){
         this.accesses.add(access);
     }
 
