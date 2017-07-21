@@ -1,10 +1,10 @@
 package account;
 
+import account.model.Access;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import account.model.Access;
+import account.model.Role;
 import account.model.Account;
-import account.model.AccountAccess;
 import account.model.AccountState;
 import account.repository.AccountAccessRepository;
 import account.repository.AccountRepository;
@@ -24,15 +24,7 @@ public class StartupRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        AccountAccess admin = accountAccessRepository.save(new AccountAccess(Access.ADMIN));
-        AccountAccess user = accountAccessRepository.save(new AccountAccess(Access.USER));
+        System.out.println(accountRepository.findAll());
 
-        Account acc1 = new Account("truong","password", AccountState.ACTIVE,"truong nguyen admin", "truongnguyen1610@gmail.com");
-        acc1.addAccess(admin);
-        accountRepository.save(acc1);
-
-        Account acc2 = new Account("son","password", AccountState.ACTIVE,"son nguyen user", "anhsonandynguyen@gmail.com");
-        acc2.addAccess(user);
-        accountRepository.save(acc2);
     }
 }

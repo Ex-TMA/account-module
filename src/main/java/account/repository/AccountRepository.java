@@ -1,7 +1,7 @@
 package account.repository;
 
 import account.model.Account;
-import account.model.AccountAccess;
+import account.model.Access;
 import account.model.AccountState;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,5 +31,5 @@ public interface AccountRepository extends JpaRepository<Account,Long> {
     Account findByEmail(@Param("email") String email);
 
     @RestResource
-    Page<Account> findByAccesses(@Param("accesses") Collection<AccountAccess> accesses, Pageable p);
+    Page<Account> findByAccesses(@Param("accesses") Collection<Access> accesses, Pageable p);
 }
