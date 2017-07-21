@@ -18,18 +18,18 @@ import java.util.Collection;
 @RepositoryRestResource(collectionResourceRel = "account", path = "account")
 public interface AccountRepository extends JpaRepository<Account,Long> {
 
-    @RestResource(path = "user")
+    @RestResource
     Account findByUserName(@Param("userName") String userName);
 
-    @RestResource(path = "state")
+    @RestResource
     Page<Account> findByState(@Param("state") AccountState state, Pageable p);
 
-    @RestResource(path = "name")
+    @RestResource
     Page<Account> findByName(@Param("name") String name, Pageable p);
 
-    @RestResource(path = "email")
+    @RestResource
     Account findByEmail(@Param("email") String email);
 
-    @RestResource(path = "accesses")
+    @RestResource
     Page<Account> findByAccesses(@Param("accesses") Collection<AccountAccess> accesses, Pageable p);
 }
