@@ -24,7 +24,16 @@ public class StartupRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        System.out.println(accountRepository.findAll());
+        Access access = accountAccessRepository.findOne(1L);
+
+        Account acc3 = new Account("truong3","password",AccountState.ACTIVE,
+                "truong 3 with encrypt","truongnguyen1610@gmail.com");
+        acc3.addAccess(access);
+        accountRepository.save( acc3 );
+
+        for(Account acc: accountRepository.findAll()){
+            System.out.println("Name: " + acc.getName() + ", match: " + Utils.match("password",acc.getPass()));
+        }
 
     }
 }

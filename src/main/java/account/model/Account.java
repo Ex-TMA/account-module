@@ -1,8 +1,11 @@
 package account.model;
 
+import account.Utils;
 import com.google.common.collect.Lists;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.Null;
@@ -38,7 +41,7 @@ public class Account extends BaseEntity{
 
     public Account(String userName, String pass, AccountState state, String name, String email) {
         this.userName = userName;
-        this.pass = pass;
+        this.pass = Utils.encode(pass);
         this.state = state;
         this.name = name;
         this.email = email;
@@ -58,7 +61,7 @@ public class Account extends BaseEntity{
     }
 
     public void setPass(String pass) {
-        this.pass = pass;
+        this.pass = Utils.encode(pass);
     }
 
     public AccountState getState() {
