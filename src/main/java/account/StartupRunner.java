@@ -34,6 +34,5 @@ public class StartupRunner implements CommandLineRunner {
         for(Account acc: accountRepository.findAll()){
             System.out.println("Name: " + acc.getName() + ", match: " + Utils.match("password",acc.getPass()));
         }
-
     }
 }
